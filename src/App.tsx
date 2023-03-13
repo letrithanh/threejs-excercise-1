@@ -1,7 +1,7 @@
 import "./App.css";
 import { Canvas } from "react-three-fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Cube } from "./components/cube/cube.component";
+import { Fence } from "./components/fence/fence.component";
 
 function App() {
 
@@ -10,8 +10,7 @@ function App() {
             <Canvas
                 camera={{ position: [0, 0, 5], fov: 45 }}
             >
-                <Cube position={[0, 0, 0]} />
-
+                <Fence position={[0, 0, 0]} distanceVertical={0.75} />
 
                 <pointLight position={[0, 10, 10]} />
                 <gridHelper />

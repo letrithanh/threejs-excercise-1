@@ -24,7 +24,12 @@ function App() {
                     distanceVertical={FENCE_ITEM_DISTANCE} 
                     rotation={[0, 0, -DEGREE * TO_PI_BIAS]}
                 />
-                <TriangularPrism position={[0, 0, 0]} angleDegree={DEGREE} length={TRIANGULAR_PRISM_LENGTH} />
+                <TriangularPrism 
+                    position={[0, 0, 0]} 
+                    angleDegree={DEGREE} 
+                    length={TRIANGULAR_PRISM_LENGTH} 
+                    hexColor="#3d3d3d"
+                    depth={2} />
 
                 <pointLight position={[0, 10, 10]} />
                 <gridHelper />

@@ -18,4 +18,9 @@ export interface TriangularPrismProps {
      * Depth level of the output. Default is 1.
      */
     depth?: number;
+
+    /**
+     * Hexa color for the output. Default is #B1C1C0.
+     * */
+    hexColor?: string;
 }

@@ -29,13 +29,14 @@ export function TriangularPrism(props: TriangularPrismProps) {
     };
 
     const geometry = new ExtrudeGeometry(shape, extrudeSettings);
+    const materialColor = props.hexColor ? props.hexColor : "#B1C1C0";
 
     return (
         <mesh 
             geometry={geometry}
             position={[x, y, z]}
         >
-            <meshStandardMaterial color="#B1C1C0" />
+            <meshStandardMaterial color={materialColor} />
         </mesh>
     );
 }

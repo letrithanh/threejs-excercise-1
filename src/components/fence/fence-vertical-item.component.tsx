@@ -20,7 +20,7 @@ export function FenceVerticalItem(props: FenceProps) {
     const SMALL_TOP_RADIUS = 0.05;
 
     const TOP_HEIGHT = 0.02;
-    const TOP_RADIUS = 0.07;
+    const TOP_WIDTH = 0.12;
     
     return (
         <>
@@ -45,7 +45,7 @@ export function FenceVerticalItem(props: FenceProps) {
             <mesh
                 position={[x, y + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2, z]}
             >
-                <cylinderGeometry args={[TOP_RADIUS, TOP_RADIUS, TOP_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
+                <boxGeometry args={[TOP_WIDTH, TOP_HEIGHT, TOP_WIDTH]} />
                 <meshStandardMaterial color="#B1C1C0" />
             </mesh>
         </>

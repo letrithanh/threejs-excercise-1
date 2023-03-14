@@ -6,11 +6,16 @@ export function FenceVerticalItem(props: FenceProps) {
     const Y_INDEX = 1;
     const Z_INDEX = 2;
 
-    const x = props.position[X_INDEX];
-    const y = props.position[Y_INDEX];
-    const z = props.position[Z_INDEX];
+    const xPosition = props.position[X_INDEX];
+    const yPosition = props.position[Y_INDEX];
+    const zPosition = props.position[Z_INDEX];
 
-    const ROOT_HEIGHT = 0.1;
+    const rootRotation = props.rootRotation && props.rootRotation.length === 3 ? props.rootRotation : [0, 0, 0];
+    const rootXRotation = rootRotation[X_INDEX];
+    const rootYRotation = rootRotation[Y_INDEX];
+    const rootZRotation = rootRotation[Z_INDEX];
+
+    const ROOT_HEIGHT = 0.085;
     const ROOT_RADIUS = 0.15;
 
     const MIDDLE_HEIGHT = 1;
@@ -19,31 +24,34 @@ export function FenceVerticalItem(props: FenceProps) {
     const SMALL_TOP_HEIGHT = 0.2;
     const SMALL_TOP_RADIUS = 0.05;
 
-    const TOP_HEIGHT = 0.02;
-    const TOP_WIDTH = 0.12;
+    const TOP_HEIGHT = 0.03;
+    const TOP_WIDTH = 0.15;
     
     return (
         <>
             <mesh
-                position={[x, y, z]}
+                position={[xPosition, yPosition, zPosition]}
+                rotation={[rootXRotation, rootYRotation, rootZRotation]}
             >
-                <cylinderGeometry args={[ROOT_RADIUS, ROOT_RADIUS, ROOT_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
+                <cylinderGeometry 
+                    args={[ROOT_RADIUS, ROOT_RADIUS, ROOT_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
                 <meshStandardMaterial color="#B1C1C0" />
             </mesh>
             <mesh
-                position={[x, y + MIDDLE_HEIGHT/2, z]}
+                position={[xPosition, yPosition + MIDDLE_HEIGHT/2, zPosition]}
             >
                 <cylinderGeometry args={[MIDDLE_RADIUS, MIDDLE_RADIUS, MIDDLE_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
                 <meshStandardMaterial color="#B1C1C0" />
             </mesh>
             <mesh
-                position={[x, y + MIDDLE_HEIGHT, z]}
+                position={[xPosition, yPosition + MIDDLE_HEIGHT, zPosition]}
             >
                 <cylinderGeometry args={[SMALL_TOP_RADIUS, SMALL_TOP_RADIUS, SMALL_TOP_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
                 <meshStandardMaterial color="#B1C1C0" />
             </mesh>
             <mesh
-                position={[x, y + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2, z]}
+                position={[xPosition, yPosition + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2, zPosition]}
+                rotation={[rootXRotation, rootYRotation, rootZRotation]}
             >
                 <boxGeometry args={[TOP_WIDTH, TOP_HEIGHT, TOP_WIDTH]} />
                 <meshStandardMaterial color="#B1C1C0" />

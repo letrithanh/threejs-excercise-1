@@ -10,6 +10,11 @@ export interface FenceProps {
     rotation?: number[];
 
     /**
+     * [x, y, z] in 3D. Default is [0, 0, 0]
+     */
+    rootRotation?: number[];
+
+    /**
      * Distance between two vertical item.
      * Default: 0.8
      */

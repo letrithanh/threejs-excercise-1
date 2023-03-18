@@ -1,6 +1,7 @@
 import "./App.css";
 import { Canvas } from "react-three-fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
+import { FenceType } from "./components/fence/fence-type.enum";
 import { FenceOnTriangularPrism } from "./components/fence-on-triangular-prism/fence-on-triangular-prism.component";
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
             <Canvas
                 camera={{ position: [0, 0, 5], fov: 45 }}
             >
-                <FenceOnTriangularPrism position={[0, 0, 0]} />
+                <FenceOnTriangularPrism position={[0, 0, 0]} fenceType={FenceType.TYPE_2} />
 
-                <pointLight position={[0, 10, 10]} />
+                {/* <pointLight position={[0, 10, 10]} /> */}
                 <gridHelper />
                 <Environment preset="dawn" background blur={0.7} />
                 <OrbitControls makeDefault />

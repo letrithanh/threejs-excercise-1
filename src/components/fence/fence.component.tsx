@@ -1,4 +1,8 @@
 import { FenceHorizontalItem } from "./fence-horizontal-item.component";
+import { FenceType } from "./fence-type.enum";
+import { FenceVerticalItemType1 } from "./fence-vertical-item-1.component";
+import { FenceVerticalItemType2 } from "./fence-vertical-item-2.component";
+import { FenceVerticalItemType3 } from "./fence-vertical-item-3.component";
 import { FenceVerticalItem } from "./fence-vertical-item.component";
 import { FenceProps } from "./fence.interface";
 
@@ -19,15 +23,32 @@ export function Fence(props: FenceProps) {
     const yRotation = rotation[Y_INDEX];
     const zRotation = rotation[Z_INDEX];
 
+    function selectVerticalFenceIten(type: FenceType, index: number){
+        if (type === FenceType.TYPE_1) {
+            return <FenceVerticalItemType1 key={`fence-${index + 1}`} position={[xPosition + (index - 2)*distanceVerticalItem, yPosition, zPosition]} index={index + 1} />
+        }
+
+        if (type === FenceType.TYPE_2) {
+            return <FenceVerticalItemType2 key={`fence-${index + 1}`} position={[xPosition + (index - 2)*distanceVerticalItem, yPosition, zPosition]} index={index + 1} />
+        }
+
+        if (type === FenceType.TYPE_3) {
+            return <FenceVerticalItemType3 key={`fence-${index + 1}`} position={[xPosition + (index - 2)*distanceVerticalItem, yPosition, zPosition]} index={index + 1} />
+        }
+
+        return <FenceVerticalItem key={`fence-${index + 1}`} position={[xPosition + (index - 2)*distanceVerticalItem, yPosition, zPosition]} index={index + 1} />
+    }
+
+    const fenceType = props.type ? props.type : FenceType.DEFAULT;
     return (
         <group
             rotation={[xRotation, yRotation, zRotation]}
         >
-            <FenceVerticalItem position={[xPosition - 2*distanceVerticalItem, yPosition, zPosition]} />
-            <FenceVerticalItem position={[xPosition - 1*distanceVerticalItem, yPosition, zPosition]} />
-            <FenceVerticalItem position={[xPosition, yPosition, zPosition]} />
-            <FenceVerticalItem position={[xPosition + 1*distanceVerticalItem, yPosition, zPosition]} />
-            <FenceVerticalItem position={[xPosition + 2*distanceVerticalItem, yPosition, zPosition]} />
+            {
+                Array.from(Array(5).keys()).map(each => (
+                    selectVerticalFenceIten(fenceType, each)
+                ))
+            }
 
 
             <FenceHorizontalItem position={[xPosition, yPosition, zPosition]} distanceVertical={distanceVerticalItem} />

@@ -1,4 +1,8 @@
 import { FenceHorizontalItem } from "../fence/fence-horizontal-item.component";
+import { FenceType } from "../fence/fence-type.enum";
+import { FenceVerticalItemType1 } from "../fence/fence-vertical-item-1.component";
+import { FenceVerticalItemType2 } from "../fence/fence-vertical-item-2.component";
+import { FenceVerticalItemType3 } from "../fence/fence-vertical-item-3.component";
 import { FenceVerticalItem } from "../fence/fence-vertical-item.component";
 import { TriangularPrism } from "../triangular-prism/triangular-prism.component";
 import { FenceOnTriangularPrismProps } from "./fence-on-triangular-prism.interface";
@@ -24,19 +28,47 @@ export function FenceOnTriangularPrism(props: FenceOnTriangularPrismProps) {
     const fenceShiftYHeight = Math.tan(DEGREE * TO_PI_BIAS) * FENCE_ITEM_DISTANCE;
     const fenceShiftZ = FENCE_ITEM_ROOT_RADIUS;
 
+    function selectVerticalFenceIten(type: FenceType, index: number){
+        if (type === FenceType.TYPE_1) {
+            return <FenceVerticalItemType1 
+                    key={`fence-item-${index}`}
+                    position={[x + (index - 2)*FENCE_ITEM_DISTANCE + fenceShiftX, y - (index + 0.5)*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
+                    rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]}
+                    index={index+1} />
+        }
+
+        if (type === FenceType.TYPE_2) {
+            return <FenceVerticalItemType2 
+                    key={`fence-item-${index}`}
+                    position={[x + (index - 2)*FENCE_ITEM_DISTANCE + fenceShiftX, y - (index + 0.5)*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
+                    rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]}
+                    index={index+1} />
+        }
+
+        if (type === FenceType.TYPE_3) {
+            return <FenceVerticalItemType3 
+                    key={`fence-item-${index}`}
+                    position={[x + (index - 2)*FENCE_ITEM_DISTANCE + fenceShiftX, y - (index + 0.5)*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
+                    rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]}
+                    index={index+1} />
+        }
+
+        return <FenceVerticalItem 
+                key={`fence-item-${index}`}
+                position={[x + (index - 2)*FENCE_ITEM_DISTANCE + fenceShiftX, y - (index + 0.5)*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
+                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]}
+                index={index+1} />
+    }
+
+    const fenceType = props.fenceType ? props.fenceType : FenceType.DEFAULT;
+
     return (
         <group>
-            <FenceVerticalItem 
-                position={[x - 2*FENCE_ITEM_DISTANCE + fenceShiftX, y - 0.5*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
-                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]}/>
-            <FenceVerticalItem position={[x - 1*FENCE_ITEM_DISTANCE + fenceShiftX, y - 1.5*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
-                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]} />
-            <FenceVerticalItem position={[x + fenceShiftX, y - 2.5*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
-                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]} />
-            <FenceVerticalItem position={[x + 1*FENCE_ITEM_DISTANCE + fenceShiftX, y - 3.5*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
-                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]} />
-            <FenceVerticalItem position={[x + 2*FENCE_ITEM_DISTANCE + fenceShiftX, y - 4.5*fenceShiftYHeight + height - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 
-                rootRotation={[0, 0, -DEGREE * TO_PI_BIAS]} />
+            {
+                Array.from(Array(5).keys()).map(each => (
+                    selectVerticalFenceIten(fenceType, each)
+                ))
+            }
 
             <FenceHorizontalItem 
                 position={[x + fenceShiftX - FENCE_ITEM_DISTANCE, y + height - fenceShiftYHeight/2 - FENCE_ITEM_ROOT_HEIGHT/2, z + fenceShiftZ]} 

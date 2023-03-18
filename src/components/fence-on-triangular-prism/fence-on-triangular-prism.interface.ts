@@ -1,3 +1,5 @@
+import { FenceType } from "../fence/fence-type.enum";
+
 export interface FenceOnTriangularPrismProps {
 
     /**
@@ -5,4 +7,8 @@ export interface FenceOnTriangularPrismProps {
      */
     position: number[];
 
+    /**
+     * Type of vertical item
+     */
+    fenceType?: FenceType;
 }

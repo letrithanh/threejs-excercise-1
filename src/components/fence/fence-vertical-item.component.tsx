@@ -35,26 +35,26 @@ export function FenceVerticalItem(props: FenceProps) {
             >
                 <cylinderGeometry 
                     args={[ROOT_RADIUS, ROOT_RADIUS, ROOT_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
             <mesh
                 position={[xPosition, yPosition + MIDDLE_HEIGHT/2, zPosition]}
             >
                 <cylinderGeometry args={[MIDDLE_RADIUS, MIDDLE_RADIUS, MIDDLE_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
             <mesh
                 position={[xPosition, yPosition + MIDDLE_HEIGHT, zPosition]}
             >
                 <cylinderGeometry args={[SMALL_TOP_RADIUS, SMALL_TOP_RADIUS, SMALL_TOP_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
             <mesh
                 position={[xPosition, yPosition + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2, zPosition]}
                 rotation={[rootXRotation, rootYRotation, rootZRotation]}
             >
                 <boxGeometry args={[TOP_WIDTH, TOP_HEIGHT, TOP_WIDTH]} />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
         </>
     );

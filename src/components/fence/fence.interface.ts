@@ -19,4 +19,6 @@ export interface FenceProps {
      * Default: 0.8
      */
     distanceVertical?: number;
+
+    index?: number;
 }

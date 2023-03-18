@@ -36,21 +36,21 @@ export function FenceHorizontalItem(props: FenceProps) {
                 rotation={[0, 0, Math.PI/2]}
             >
                 <cylinderGeometry args={[WRAPPER_HORIZONTAL_RADIUS, WRAPPER_HORIZONTAL_RADIUS, WRAPPER_HORIZONTAL_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
             <mesh
                 position={[xPosition, yPosition + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2 + TOP_HEIGHT/2 + HORIZONTAL_ITEM_RADIUS, zPosition]}
                 rotation={[0, 0, Math.PI/2]}
             >
                 <cylinderGeometry args={[HORIZONTAL_ITEM_RADIUS, HORIZONTAL_ITEM_RADIUS, HORIZONTAL_ITEM_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
             <mesh
                 position={[xPosition+5 * DISTANCE_VERTICAL_ITEM/2, yPosition + MIDDLE_HEIGHT + SMALL_TOP_HEIGHT/2 + TOP_HEIGHT/2 + HORIZONTAL_ITEM_RADIUS, zPosition]}
                 rotation={[0, 0, Math.PI/2]}
             >
                 <cylinderGeometry args={[WRAPPER_HORIZONTAL_RADIUS, WRAPPER_HORIZONTAL_RADIUS, WRAPPER_HORIZONTAL_HEIGHT, 32, 1, false, 0, 2*Math.PI]}  />
-                <meshStandardMaterial color="#B1C1C0" />
+                <meshStandardMaterial />
             </mesh>
         </group>
     );
